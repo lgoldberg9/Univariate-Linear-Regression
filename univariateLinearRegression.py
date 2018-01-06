@@ -58,8 +58,8 @@ def hypothesis_func(theta, interpolate):
     """
     return theta[0] + theta[1] * interpolate
 
-def zeroth_dimension_derivative_term(theta, datum):
-    """zeroth_dimension_derivative_term,
+def projective_derivative_term(theta, datum):
+    """projective_derivative_term,
     """
     return hypothesis_func(theta, datum[0]) - datum[1]
 
@@ -77,7 +77,7 @@ def linear_regression(x_vec, y_vec, learning_scale=0.01):
     lambda deriv, theta: 1./data_length * \
     functools.reduce(operator.add, [deriv(theta, datum) \
                                     for datum in zip(x_vec, y_vec)])
-    cost_gradient = [lambda theta: cost_deriv(zeroth_dimension_derivative_term, theta), \
+    cost_gradient = [lambda theta: cost_deriv(projective_derivative_term, theta), \
                         lambda theta: cost_deriv(first_dimension_derivative_term, theta)]
     regression_coefficients, steps = gradient_descent(cost_gradient, initial_regression_coefficients, \
                                                 learning_scale)
@@ -85,10 +85,10 @@ def linear_regression(x_vec, y_vec, learning_scale=0.01):
 
 if __name__ == "__main__":
     # pathology    
-    X_VEC = [2, 5, 9, 15, 4]
-    Y_VEC = [8, 4, 16, -2, 1]
-    # X_VEC = [1, 2, 3, 4, 5, 0]
-    # Y_VEC = [1, 2, 3, 4, 9, -1]
+    # X_VEC = [2, 5, 9, 15, 4]
+    # Y_VEC = [8, 4, 16, -2, 1]
+    X_VEC = [1, 2, 3, 4, 5, 0]
+    Y_VEC = [1, 2, 3, 4, 9, -1]
     X_NORM = norm(X_VEC)
     Y_NORM = norm(Y_VEC)
     NORMED_X_VEC = [x / X_NORM for x in X_VEC]
