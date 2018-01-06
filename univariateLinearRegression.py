@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Spyder Editor
-
-This is a temporary script file.
+some heckin description
 """
 
 from math import sqrt
 import functools
 import operator
-import sys
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -50,7 +47,6 @@ def gradient_descent(cost_gradient, initial_regression_coefficients, descent_sca
         has_converged = (np.abs(previous_norm - norm(new_regression_coefficients)) < EPSILON)
         has_exceeded_max_steps = (step >= MAX_STEPS)
         previous_regression_coefficients = new_regression_coefficients
-    
     return new_regression_coefficients, step
 
 def hypothesis_func(theta, interpolate):
@@ -84,7 +80,7 @@ def linear_regression(x_vec, y_vec, learning_scale=0.01):
     return lambda x: hypothesis_func(regression_coefficients, x), steps
 
 if __name__ == "__main__":
-    # pathology    
+    # pathology
     # X_VEC = [2, 5, 9, 15, 4]
     # Y_VEC = [8, 4, 16, -2, 1]
     X_VEC = [1, 2, 3, 4, 5, 0]
